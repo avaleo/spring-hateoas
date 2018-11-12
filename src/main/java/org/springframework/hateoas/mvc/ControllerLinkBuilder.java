@@ -216,7 +216,7 @@ public class ControllerLinkBuilder extends LinkBuilderSupport<ControllerLinkBuil
 		return this;
 	}
 
-	/* 
+	/*
 	 * (non-Javadoc)
 	 * @see org.springframework.hateoas.UriComponentsLinkBuilder#createNewInstance(org.springframework.web.util.UriComponentsBuilder)
 	 */
@@ -275,6 +275,18 @@ public class ControllerLinkBuilder extends LinkBuilderSupport<ControllerLinkBuil
 			return builderFromRequest;
 		} else {
 			return UriComponentsBuilder.fromUri(baseUri);
+		}
+	}
+
+	static URI getBaseUri() {
+		URI baseUri = getCachedBaseUri();
+		if (baseUri == null) {
+			UriComponentsBuilder builderFromRequest = createBuilderFromRequest();
+			URI uri = builderFromRequest.build().toUri();
+			cacheBaseUri(uri);
+			return uri;
+		} else {
+			return baseUri;
 		}
 	}
 
