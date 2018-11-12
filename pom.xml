@@ -702,6 +702,19 @@
 		</repository>
 	</repositories>
 
+	<distributionManagement>
+		<repository>
+			<id>avaleo-repository</id>
+			<url>dav:http://build.avaleo.net/maven</url>
+			<uniqueVersion>false</uniqueVersion>
+		</repository>
+		<snapshotRepository>
+			<id>avaleo-snapshot-repository</id>
+			<url>dav:http://build.avaleo.net/maven-snapshot</url>
+			<uniqueVersion>true</uniqueVersion>
+		</snapshotRepository>
+	</distributionManagement>
+
 	<scm>
 		<url>https://github.com/spring-projects/spring-hateoas</url>
 		<connection>scm:git:git://github.com/spring-projects/spring-hateoas.git</connection>
